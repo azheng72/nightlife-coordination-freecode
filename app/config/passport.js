@@ -19,7 +19,7 @@ module.exports=function(passport){
 	    var hostname = process.env.HEROKU_URL
 	}
 	else{
-	    var hostname ='https://' + process.env.C9_HOSTNAME;
+	    var hostname ='https://' + process.env.C9_HOSTNAME + '/';
 	}
 
     passport.use(new FacebookStrategy({
