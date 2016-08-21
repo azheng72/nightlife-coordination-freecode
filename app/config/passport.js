@@ -15,10 +15,17 @@ module.exports=function(passport){
 		});
 	});
 	
+	if(process.env.HEROKU_URL){
+	    var hostname = process.env.HEROKU_URL
+	}
+	else{
+	    var hostname ='https://' + process.env.C9_HOSTNAME;
+	}
+
     passport.use(new FacebookStrategy({
         clientID: process.env.FACEBOOK_APP_ID,
         clientSecret: process.env.FACEBOOK_APP_SECRET,
-        callbackURL:  "https://nightlife-coordination-freecode-azheng72.c9users.io/auth/facebook/callback" //process.env.URL + '/auth/facebook/callback' ||
+        callbackURL:   hostname + '/auth/facebook/callback' 
       },
       function(accessToken, refreshToken, profile, done) {
         User.findOne({user:profile['_json']}, function(err, user) {

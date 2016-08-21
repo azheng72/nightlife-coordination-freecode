@@ -12,7 +12,7 @@ require('dotenv').load();
 
 var app = express();
 
-mongoose.connect(process.env.MONGO_URI);
+mongoose.connect(process.env.MONGODB_URI || process.env.MONGO_URI);
 
 app.use('/client',express.static(path +'/client'));
 app.use('/node_modules',express.static(path+'/node_modules'));
