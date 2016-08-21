@@ -1,0 +1,31 @@
+{
+  "name": "nightlife-coordination-freecode",
+  "version": "1.0.0",
+  "description": "A little app use to search people  in the bars",
+  "main": "server.js",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-resource": "^1.5.8",
+    "async": "^2.0.1",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "bootstrap": "^3.3.7",
+    "express-session": "^1.14.0",
+    "mongoose": "^4.1.12",
+    "mongoose-findorcreate": "^0.1.2",
+    "oauth-signature": "^1.3.1",
+    "passport": "^0.3.2",
+    "nonce": "^1.0.4",
+    "passport-facebook": "^2.1.1",
+    "dotenv": "^2.0.0",
+    "request": "^2.74.0",
+    "passport-oauth": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "azheng72",
+  "license": "ISC"
+}

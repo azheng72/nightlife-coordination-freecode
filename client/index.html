@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" ng-app='app'>
+  <head>
+    <title>Nightlife Coordination App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script type="text/javascript" src="/node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/node_modules/angular-resource/angular-resource.min.js"></script>
+    <script type="text/javascript" src="/client/index.controller.js"></script>
+  </head>
+  <body ng-controller='AppController'>
+    
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active" ng-show="loginbtn"><a href="#" ng-click="login()">Login</a></li>
+      <li role="presentation" class="active" ng-show="logoutbtn"><a href="#" ng-click="logout()">Logout</a></li>
+      <li class="navbar-text" ng-show="logoutbtn"><p>Signed in as <a href="#" class="navbar-link">{{username}} / {{userid}}</a></p></li>
+      <li role="presentation" class="active" ng-show="logoutbtn && mylocation!==''">
+        <a href="#">Your Location: {{mylocation}} <button class='btn btn-warning btn-xs' ng-click="leave()" >LEAVE</button></a>
+      </li>
+
+    </ul>
+
+    <style type="text/css">
+      .vcenter {
+          margin-top:30%;
+      }
+      
+      @keyframes ani {
+          0% {margin-top:30%}
+          50% {margin-top:3%;}
+          100% {margin-top:5%;}
+      }
+
+      .littlemargin{
+          /*margin-top:5%;*/
+          animation-name: ani;
+          animation-duration: 3s;
+          margin-top:5%;
+      }
+    </style>
+    
+    <div class="input-group" ng-class="cssClass" ng-init="cssClass='vcenter'">
+      <span class="input-group-addon" id="basic-addon1">Search</span>
+      <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1" ng-model='data.input' ng-change="change(data.input) ; cssClass='littlemargin';">
+    </div>
+
+    <!--{{update}}{{bars}}{{customers}}-->
+    
+    <div ng-repeat="bar in bars">
+      <div class="row thumbnail" style='margin-left:auto;margin-right:auto;'>
+          <div class=" col-sm-2" >
+            <img ng-src="{{bar['snippet_image_url']}}" alt="...">
+          </div>
+          <div class="col-sm-8">
+              <h3>{{bar.name}}  
+                <img ng-src="{{bar['rating_img_url_small']}}" alt="...">
+                <small>Who's here: <span ng-repeat='customer in bar.customers'>{{customer.user.name}}, </span></small>
+              </h3>
+              <p>{{bar['snippet_text']}}</p>
+          </div> 
+          <div class=" col-sm-2">
+            <p><a ng-href="{{bar['url']}}" target="_blank" class="btn btn-primary" role="button">More info</a> </p>
+            <p></p><a href="#" class="btn btn-default" role="button" ng-click="gohere(bar.id,bar.name)" ng-show='gohereBtn'>Go here !</a></p>
+          </div>
+      </div>
+    </div>
+    
+    
+    
+  </body>
+</html>
